@@ -39,5 +39,14 @@ namespace MvcKutuphane.Controllers
             var yazar = db.TblYazar.Find(id);
             return View("YazarGetir", yazar);
         }
+        public ActionResult YazarGuncelle(TblYazar p)
+        {
+            var yzr = db.TblYazar.Find(p.YazarID);
+            yzr.YazarAd = p.YazarAd;
+            yzr.YazarSoyad = p.YazarSoyad;
+            yzr.YazarDetay = p.YazarDetay;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
